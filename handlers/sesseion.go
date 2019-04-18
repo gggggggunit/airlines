@@ -11,14 +11,14 @@ import (
 
 func SessionStart(rw http.ResponseWriter, r *http.Request) *SessionData { //проверка на авторизацию
 
-propusk, err := r.Cookie("propusk") //если куки?
+	propusk, err := r.Cookie("propusk") //если куки?
 	if err != nil {                     //если нет такого даем куки
-		return createCookie(rw,r)
+		return createCookie(rw, r)
 	}
 
 	data := cartStorage.Get(propusk.Value) //проверяем хеш на существование
 	if data == nil {                       //если данные =нил то ошибка(кука протухла)
-		return createCookie(rw,r)
+		return createCookie(rw, r)
 	}
 
 	sd, ok := data.(*SessionData) //
@@ -28,28 +28,28 @@ propusk, err := r.Cookie("propusk") //если куки?
 	return sd
 }
 
-func createCookie (rw http.ResponseWriter, r *http.Request) *SessionData {
+func createCookie(rw http.ResponseWriter, r *http.Request) *SessionData {
 
 	propusk := &http.Cookie{}
-	propusk.Name = "propusk"			//добавляем имя "пропуск"
-	propusk.Value = CreateHash()		//добавляем функцию генирирования хеш
-	http.SetCookie(rw, propusk) 		//посылаем браузеру куки с хеш
+	propusk.Name = "propusk"     //добавляем имя "пропуск"
+	propusk.Value = CreateHash() //добавляем функцию генирирования хеш
+	propusk.Path = "/"
+	http.SetCookie(rw, propusk) //посылаем браузеру куки с хеш
 	sd := &SessionData{}
 	//// r.RemoteAddr == "127.0.0.1:44595" //ipv4
 	//// r.RemoteAddr == "[::1]:44595" //ipv6
 	index := strings.LastIndex(r.RemoteAddr, ":")
 
 	if index == -1 {
-	 panic("yebat, sho takoe???")
+		panic("yebat, sho takoe???")
 	}
 	ip := r.RemoteAddr[:index]
-	sd.Ip = ip					//берем IP
+	sd.Ip = ip //берем IP
 
 	http.SetCookie(rw, propusk)
-	cartStorage.Set(propusk.Value, sd)  //первый параметр пропусквалюе,вторым сесию
+	cartStorage.Set(propusk.Value, sd) //первый параметр пропусквалюе,вторым сесию
 
 	return sd
-
 
 	//propusk := &http.Cookie{}
 	//propusk.Name = "propusk"

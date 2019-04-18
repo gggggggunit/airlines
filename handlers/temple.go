@@ -19,6 +19,7 @@ func init() {
 		"templates/footer.html",
 		"templates/nav.html",
 		"templates/login.html",
+		"templates/adminlist.html",
 	)
 
 	if err != nil {

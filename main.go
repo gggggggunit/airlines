@@ -52,6 +52,8 @@ func main() {
 
 	http.HandleFunc("/login", handlers.Login)
 
+	http.HandleFunc("/admin/list", handlers.AdminList)
+
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		panic(err)
