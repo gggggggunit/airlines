@@ -33,7 +33,7 @@ func main() {
 	//}
 	//num, err := result.RowsAffected()
 	//id, err := result.LastInsertId()
-	//
+	// changes
 	//fmt.Printf("num:%d; id:%d\n", num, id)
 
 	http.HandleFunc("/", handlers.List) // handlers пакет с файлами GO
