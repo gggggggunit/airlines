@@ -1,0 +1,28 @@
+{{template "header.html"}}
+    <div class="container">
+        <h1 align="center">Buy ticket to rise № {{.ID}} </h1>
+        <table class="table">
+            <tr>
+                <th>Source</th>
+                <td>{{.Source}}</td>
+            </tr>
+            <tr>
+                <th>Destination</th>
+                <td>{{.Destination}}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{.When}}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{.Price}}</td>
+            </tr>
+            <tr>
+                <td><a href="/addtocart?id={{.ID}}" class="btn btn-success">Add to cart</a></td>
+                <td><a href="/search" class="btn btn-warning">Cancel</a></td>
+            </tr>
+        </table>
+    </div>
+
+{{template "footer.html"}}

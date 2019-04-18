@@ -1,0 +1,43 @@
+{{template "header.html"}}
+    <header>
+        <h1 align="center">Список авиарейсов</h1>
+        <form action="/search" method="post" align="center"  >
+
+
+            <input id="source" placeholder="Source" type="text" class="fotm-control" name="source" value="{{.Source}}">
+
+
+            <input id="destination" placeholder="Destination" type="text" class="fotm-control" name="destination" value="{{.Destination}}">
+
+
+            <input id="when" placeholder="When" type="text" class="fotm-control" name="date111" value="{{.When}}">
+
+            <input id="price" placeholder="Price" type="text" class="fotm-control" name="price22" value="{{.Price}}">
+
+
+            <button type="submit" class="btn btn-info">Search</button>
+
+        </form>
+        <table class="table table-hover">
+            <tr>
+                 <th>ID</th>
+                 <th>Source</th>
+                <th>Destination</th>
+                <th>Date</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+            <!--проходим масив проходит и отдает инф в браузер-->
+            {{range .List}}
+                <tr>
+                    <td>{{.ID}}</td>
+                    <td>{{.Source}}</td>
+                    <td>{{.Destination}}</td>
+                    <td>{{.When}}</td>
+                    <td>{{.Price}}</td>
+                    <td><a href="/buy?id={{.ID}}" class="btn btn-success">BUY</a></td>
+                </tr>
+            {{end}}
+        </table>
+    </header>
+{{template "footer.html"}}

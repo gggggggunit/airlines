@@ -1,0 +1,32 @@
+{{template "header.html"}}
+<header>
+    <h1 align="center">Ваш билет</h1>
+    <table class="table table-hover">
+        <tr>
+            <th>ID</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Date</th>
+            <th>Price</th>
+        </tr>
+        <!--проходим масив проходит и отдает инф в браузер-->
+        {{range .Cart}}
+            <tr>
+                <td>{{.ID}}</td>
+                <td>{{.Source}}</td>
+                <td>{{.Destination}}</td>
+                <td>{{.When}}</td>
+                <td>{{.Price}}</td>
+            </tr>
+        {{end}}
+        <tr>
+            <td colspan="4"><strong>Итого:</strong></td>
+            <td><strong>{{.Sum}}</strong> </td>
+        </tr>
+        <tr>
+            <td><a href="/congrat" class="btn btn-success">Оформить</a></td>
+            <td colspan="4"><a href="/search" class="btn btn-warning">Продолжить покупки</a></td>
+        </tr>
+    </table>
+</header>
+{{template "footer.html"}}
