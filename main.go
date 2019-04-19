@@ -56,6 +56,8 @@ func main() {
 
 	http.HandleFunc("/admin/add", handlers.AdminAdd)
 
+	http.HandleFunc("/admin/delete", handlers.AdminDelete)
+
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		panic(err)

@@ -1,26 +1,26 @@
 {{ template "header.html" }}
 <div class="container">
-    <form action="/search" method="post" class="mt-2 mb-2">
+<!-- {{/*    <form action="/search" method="post" class="mt-2 mb-2">*/}}
 
-        <div class="row">
-            <div class="form-group col-sm-3">
-                <input type="text" name="source" placeholder="Source" class="form-control"  value="{{.Source}}">
-            </div>
-            <div class="form-group col-sm-3">
-                <input type="text" name="destination" placeholder="Destination" class="form-control" value="{{ .Destination }}">
-            </div>
-            <div class="form-group col-sm-3">
-                <input type="text" name="date111" placeholder="When"  class="form-control"  value="{{.When}}">
-            </div>
-            <div class="form-group col-sm-3 text-right">
-                <button type="submit" class="btn btn-info">Search</button>
-            </div>
-        </div>
-    </form>
-    <a href="/admin/add" class="btn btn-success">Add</a>
-    <h1>Список авиарейсов</h1>
-    <table class="table table-hover">
-        <thead class="thead-dark">
+{{/*        <div class="row">*/}}
+{{/*            <div class="form-group col-sm-3">*/}}
+{{/*                <input type="text" name="source" placeholder="Source" class="form-control"  value="{{.Source}}">*/}}
+{{/*            </div>*/}}
+{{/*            <div class="form-group col-sm-3">*/}}
+{{/*                <input type="text" name="destination" placeholder="Destination" class="form-control" value="{{ .Destination }}">*/}}
+{{/*            </div>*/}}
+{{/*            <div class="form-group col-sm-3">*/}}
+{{/*                <input type="text" name="date111" placeholder="When"  class="form-control"  value="{{.When}}">*/}}
+{{/*            </div>*/}}
+{{/*            <div class="form-group col-sm-3 text-right">*/}}
+{{/*                <button type="submit" class="btn btn-info">Search</button>*/}}
+{{/*            </div>*/}}
+{{/*        </div>*/}}
+{{/*    </form>*/}} -->
+<a href="/admin/add" class="btn btn-success">Add</a>
+<h1>Список авиарейсов</h1>
+<table class="table table-hover">
+    <thead class="thead-dark">
         <tr>
             <th>ID</th>
             <th>Source</th>
@@ -29,23 +29,23 @@
             <th>Price</th>
             <th>Action</th>
         </tr>
-        </thead>
-        <tbody>
+    </thead>
+    <tbody>
         {{ range .List }}
-            <tr>
-                <td>{{.ID}}</td>
-                <td>{{.Source}}</td>
-                <td>{{.Destination}}</td>
-                <td>{{.When}}</td>
-                <td>{{.Price}}</td>
-                <td>
-                    <a href="#" class="btn btn-primary">Edit</a>
-                    <a href="/admin/delete?id={{.ID}}" class="btn btn-warning">Remove</a>
-                </td>
-            </tr>
+        <tr>
+            <td>{{.ID}}</td>
+            <td>{{.Source}}</td>
+            <td>{{.Destination}}</td>
+            <td>{{.When}}</td>
+            <td>{{.Price}}</td>
+            <td>
+                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="/admin/delete?id={{.ID}}" class="btn btn-warning">Remove</a>
+            </td>
+        </tr>
         {{ end }}
-        </tbody>
-    </table>
+    </tbody>
+</table>
 </div>
 
 {{ template "footer.html" }}

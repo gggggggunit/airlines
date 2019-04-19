@@ -1,19 +1,19 @@
-{{template "header.html"}}
-<div class="conteiner">
-    <div class="row">
-        <div class="col-sm-4 mx-auto mt-5">
-            <form method="post" action="/login">
-                <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password1" class="form-control" id="password" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-primary">Login</button>
-            </form>
+    {{template "header.html"}}
+    <div class="conteiner">
+        <div class="row">
+            <div class="col-sm-4 mx-auto mt-5">
+                <form method="post" action="/login">
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password1" class="form-control" id="password" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-{{template "footer.html"}}
+    {{template "footer.html"}}

@@ -1,30 +1,30 @@
 {{template "header.html"}}
 <div class="container">
-        <h1 align="center">Список авиарейсов</h1>
+    <h1 align="center">Список авиарейсов</h1>
     <div class="row">
         <table class="table table-hover">
             <tr>
-                 <th>ID</th>
-                 <th>Source</th>
-                <th>Destination</th>
-                <th>Date</th>
-                <th>Price</th>
-            </tr>
-            <!--проходим масив проходит и отдает инф в браузер-->
-            {{range .List}}
-                <tr>
-                    <td>{{.ID}}</td>
-                    <td>{{.Source}}</td>
-                    <td>{{.Destination}}</td>
-                    <td>{{.When}}</td>
-                    <td>{{.Price}}</td>
-                </tr>
-            {{end}}
-        </table>
-    </div>
-        <p align="center">{{range .Pages}}
-                <a href="/?p={{.}}" class="btn btn-info">{{.}}</a>
-            {{end}}
-        </p>
-    </div>
+               <th>ID</th>
+               <th>Source</th>
+               <th>Destination</th>
+               <th>Date</th>
+               <th>Price</th>
+           </tr>
+           <!--проходим масив проходит и отдает инф в браузер-->
+           {{range .List}}
+           <tr>
+            <td>{{.ID}}</td>
+            <td>{{.Source}}</td>
+            <td>{{.Destination}}</td>
+            <td>{{.When}}</td>
+            <td>{{.Price}}</td>
+        </tr>
+        {{end}}
+    </table>
+</div>
+<p align="center">{{range .Pages}}
+    <a href="/?p={{.}}" class="btn btn-info">{{.}}</a>
+    {{end}}
+</p>
+</div>
 {{template "footer.html"}}
