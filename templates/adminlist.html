@@ -4,18 +4,16 @@
     <form action="/search" method="post" class="mt-2 mb-2">
 
         <div class="row">
-            <div class="form-group col-sm-4">
-                <input type="text" name="source" placeholder="Source" class="form-control" value="{{ .Source }}">
+            <div class="form-group col-sm-3">
+                <input id="source" placeholder="Source" type="text" class="form-control" name="source" value="{{.Source}}">
             </div>
-            <div class="form-group col-sm-4">
+            <div class="form-group col-sm-3">
                 <input type="text" name="destination" placeholder="Destination" class="form-control" value="{{ .Destination }}">
             </div>
-            <div class="form-group col-sm-4">
-                <input type="text" name="when" placeholder="When" class="form-control" value="{{ .When }}">
+            <div class="form-group col-sm-3">
+                <input id="when" placeholder="When" type="text" class="form-control" name="date111" value="{{.When}}">
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 text-right">
+            <div class="form-group col-sm-3 text-right">
                 <button type="submit" class="btn btn-info">Search</button>
             </div>
         </div>
