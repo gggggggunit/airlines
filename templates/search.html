@@ -4,13 +4,13 @@
         <form action="/search" method="post" align="center"  >
             <div class="row">
                 <div class="form-group col-sm-3">
-                    <input id="source" placeholder="Source" type="text" class="form-control" name="source" value="{{.Source}}">
+                    <input type="text" name="source" placeholder="Source"  class="form-control"  value="{{.Source}}">
                 </div>
                 <div class="form-group col-sm-3">
                     <input type="text" name="destination" placeholder="Destination" class="form-control" value="{{ .Destination }}">
                 </div>
                 <div class="form-group col-sm-3">
-                    <input id="when" placeholder="When" type="text" class="form-control" name="date111" value="{{.When}}">
+                    <input type="text" name="date111" placeholder="When"  class="form-control"  value="{{.When}}">
                 </div>
                 <div class="form-group col-sm-3 text-right">
                     <button type="submit" class="btn btn-info">Search</button>

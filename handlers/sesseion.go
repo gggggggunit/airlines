@@ -33,8 +33,8 @@ func createCookie(rw http.ResponseWriter, r *http.Request) *SessionData {
 	propusk := &http.Cookie{}
 	propusk.Name = "propusk"     //добавляем имя "пропуск"
 	propusk.Value = CreateHash() //добавляем функцию генирирования хеш
-	propusk.Path = "/"
-	http.SetCookie(rw, propusk) //посылаем браузеру куки с хеш
+	propusk.Path = "/"           //куки для всех путей
+	http.SetCookie(rw, propusk)  //посылаем браузеру куки с хеш
 	sd := &SessionData{}
 	//// r.RemoteAddr == "127.0.0.1:44595" //ipv4
 	//// r.RemoteAddr == "[::1]:44595" //ipv6

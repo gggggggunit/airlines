@@ -10,7 +10,10 @@ import (
 func Login(rw http.ResponseWriter, r *http.Request) {
 
 	sd := SessionStart(rw, r) //СЕСИЯ
-
+	if sd.ID > 0 {
+		http.Redirect(rw, r, "/admin/list", 302)
+		return
+	}
 	if r.Method == "GET" {
 
 		err := tpl.ExecuteTemplate(rw, "login.html", nil)
@@ -71,12 +74,11 @@ func Login(rw http.ResponseWriter, r *http.Request) {
 			panic(err)
 		}
 
-		sd.ID=iid
-		sd.Ballance=bballance
-		sd.Email=email
+		sd.ID = iid
+		sd.Ballance = bballance
+		sd.Email = email
 		sd.Print()
 		http.Redirect(rw, r, "/search", 302)
-
 
 	}
 

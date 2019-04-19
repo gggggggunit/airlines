@@ -7,7 +7,7 @@ import (
 )
 
 func AdminList(rw http.ResponseWriter, r *http.Request) {
-
+	var err error
 	sd := SessionStart(rw, r)
 
 	if sd.ID == 0 {
@@ -18,7 +18,6 @@ func AdminList(rw http.ResponseWriter, r *http.Request) {
 
 	var page int = 1
 	var count int = 20
-	var err error
 
 	PageStr := r.FormValue("p")
 	if PageStr != "" {
@@ -60,8 +59,8 @@ func AdminList(rw http.ResponseWriter, r *http.Request) {
 
 	for rows.Next() { // до тех пор пока в базе есть строки
 		avia := &Avia{}
-		err := rows.Scan(&avia.ID, &avia.Source, &avia.Destination, &avia.When, &avia.Price) //загружаем с базы в переменые
-		if err != nil {                                                                      // проверяем на ошибку
+		err = rows.Scan(&avia.ID, &avia.Source, &avia.Destination, &avia.When, &avia.Price) //загружаем с базы в переменые
+		if err != nil {                                                                     // проверяем на ошибку
 			panic(err)
 		}
 		list.List = append(list.List, avia) //добавляем в масив
