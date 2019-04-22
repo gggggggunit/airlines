@@ -3,13 +3,16 @@
     <h1 align="center">Список авиарейсов</h1>
     <div class="row">
         <table class="table table-hover">
+            <thead class="thead-dark">
             <tr>
-               <th>ID</th>
-               <th>Source</th>
-               <th>Destination</th>
-               <th>Date</th>
-               <th>Price</th>
-           </tr>
+                <th>ID</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Date</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+            </thead>
            <!--проходим масив проходит и отдает инф в браузер-->
            {{range .List}}
            <tr>

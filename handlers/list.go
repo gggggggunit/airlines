@@ -8,37 +8,34 @@ import (
 
 func List(rw http.ResponseWriter, r *http.Request) { //ДЛЯ ОТОБРАЖЕНИЯ ТАБЛИЦЫ РЕЙСОВ
 
-	var page int  = 1
-	var count int  =  20
-	var err  error
+	var page int = 1
+	var count int = 20
+	var err error
 
-	PageStr:=r.FormValue("p")
-	if PageStr!=""{
-		page,err=strconv.Atoi(PageStr)
-		if err!=nil{
-			page=1
+	PageStr := r.FormValue("p")
+	if PageStr != "" {
+		page, err = strconv.Atoi(PageStr)
+		if err != nil {
+			page = 1
 		}
 	}
-	fmt.Printf("page: %v; count: %v\n",page,count)
+	fmt.Printf("page: %v; count: %v\n", page, count)
 
 	var offset int = 0
-	offset=page*count-count
+	offset = page*count - count
 
-	rows,err:=dbc.Query("select count(*) from `airlines`")
+	rows, err := dbc.Query("select count(*) from `airlines`")
 	rows.Next()
 	var total int
 	rows.Scan(&total)
-	fmt.Printf("total: %v\n",total)
+	fmt.Printf("total: %v\n", total)
 	rows.Close()
 
-	var pages =total/count
+	var pages = total / count
 
+	query := fmt.Sprintf("select * from `airlines` limit %d,%d", offset, count)
 
-	query:=fmt.Sprintf("select * from `airlines` limit %d,%d", offset,count)
-
-
-
-    if r.RequestURI=="/favicon.ico"{
+	if r.RequestURI == "/favicon.ico" {
 		return
 	}
 
@@ -46,9 +43,9 @@ func List(rw http.ResponseWriter, r *http.Request) { //ДЛЯ ОТОБРАЖЕН
 	//fmt.Printf("%+v\n",sd)
 
 	list := &AviaList{}
-	list.List = make([]*Avia, 0, 1000)
+	list.List = make([]*Avia, 0, 2000)
 
-	rows, err = dbc.Query(query)//"select * from `airlines` ") //запрос в базу на получение данных
+	rows, err = dbc.Query(query) //"select * from `airlines` ") //запрос в базу на получение данных
 	if err != nil {
 		panic(err)
 	}
@@ -64,11 +61,11 @@ func List(rw http.ResponseWriter, r *http.Request) { //ДЛЯ ОТОБРАЖЕН
 	}
 	rows.Close()
 
-	for i:=1;i<=pages;i++{
-		list.Pages=append(list.Pages,i)
+	for i := 1; i <= pages; i++ {
+		list.Pages = append(list.Pages, i)
 	}
 
-	err=tpl.ExecuteTemplate(rw, "list.html", list) //отправляем файл штмл на браузер
+	err = tpl.ExecuteTemplate(rw, "list.html", list) //отправляем файл штмл на браузер
 	if err != nil {
 		fmt.Printf("List execute template:%s \n", err)
 	}

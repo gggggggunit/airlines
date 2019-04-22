@@ -1,4 +1,5 @@
 {{ template "header.html" }}
+<h1 align="center">Добавляем авиарейс</h1>
 <div class="container">
     <form action="/admin/add"  method="post" class="mt-2 mb-2">
         <div class="row">
@@ -16,7 +17,7 @@
             </div>
             <div class="form-group col-sm-12 text-right">
                 <button type="submit" class="btn btn-info mr-2">Add</button>
-                <a href="" class="btn btn-warning">Cancel</a>
+                <a href="/admin/list" class="btn btn-warning">Cancel</a>
             </div>
         </div>
     </form>

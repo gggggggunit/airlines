@@ -9,7 +9,7 @@ import (
 
 func Buy(rw http.ResponseWriter, r *http.Request) { //ДЛЯ покупки РЕЙСОВ
 
-	SessionStart(rw,r)
+	SessionStart(rw, r)
 
 	avia := &Avia{}
 	var err error

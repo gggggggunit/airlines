@@ -18,9 +18,9 @@ type AviaList struct {
 	ID          string
 	Source      string //создана для того что б показивать потом в форме запрос который был
 	Destination string //создана для того что б показивать потом в форме запрос который был
-	When        string
-	Price       string
-	Pages   []    int
+	When        string //создана для того что б показивать потом в форме запрос который был
+	Price       int    //создана для того что б показивать потом в форме запрос который был
+	Pages       []int
 }
 
 type Cart struct { //корзина(структура как БД)
@@ -31,11 +31,11 @@ type Cart struct { //корзина(структура как БД)
 }
 
 type SessionData struct {
-	Cart []*Avia
-	Ip   string
-	Sum  int
-	ID int
-	Email string
+	Cart     []*Avia
+	Ip       string
+	Sum      int
+	ID       int
+	Email    string
 	Ballance int
 }
 
@@ -46,7 +46,7 @@ func (s *SessionData) Print() {
 	for _, it := range s.Cart {
 		fmt.Printf("\t%+v\n", it)
 	}
-	fmt.Printf("Login OK: %s,ID: %d\n", s.Email,s.ID)
+	fmt.Printf("Login OK: %s,ID: %d\n", s.Email, s.ID)
 }
 
 type CartStorage struct {

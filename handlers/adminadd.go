@@ -72,7 +72,7 @@ func AdminAdd(rw http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		http.Redirect(rw, r, "/admin/add", 302)
+		http.Redirect(rw, r, "/admin/list", 302)
 		fmt.Printf("INSERT in airlines OK\n")
 
 	}
