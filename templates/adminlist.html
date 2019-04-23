@@ -46,6 +46,10 @@
         {{ end }}
     </tbody>
 </table>
+    <p align="center">{{range .Pages}}
+            <a href="/admin/list?p={{.}}" class="btn btn-info mt-1 mr-1">{{.}}</a>
+        {{end}}
+    </p>
 </div>
 
 {{ template "footer.html" }}

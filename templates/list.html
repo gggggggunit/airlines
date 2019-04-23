@@ -10,7 +10,6 @@
                 <th>Destination</th>
                 <th>Date</th>
                 <th>Price</th>
-                <th>Action</th>
             </tr>
             </thead>
            <!--проходим масив проходит и отдает инф в браузер-->
@@ -26,7 +25,7 @@
     </table>
 </div>
 <p align="center">{{range .Pages}}
-    <a href="/?p={{.}}" class="btn btn-info">{{.}}</a>
+    <a href="/?p={{.}}" class="btn btn-info mt-1 mr-1">{{.}}</a>
     {{end}}
 </p>
 </div>

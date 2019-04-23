@@ -19,7 +19,7 @@ func List(rw http.ResponseWriter, r *http.Request) { //ДЛЯ ОТОБРАЖЕН
 			page = 1
 		}
 	}
-	fmt.Printf("page: %v; count: %v\n", page, count)
+	//fmt.Printf("page: %v; count: %v\n", page, count)
 
 	var offset int = 0
 	offset = page*count - count
@@ -28,10 +28,21 @@ func List(rw http.ResponseWriter, r *http.Request) { //ДЛЯ ОТОБРАЖЕН
 	rows.Next()
 	var total int
 	rows.Scan(&total)
-	fmt.Printf("total: %v\n", total)
+	//fmt.Printf("total: %v\n", total)
 	rows.Close()
 
-	var pages = total / count
+	var pages int
+
+	if total%count != 0 {
+		pages = total / count
+		pages += 1
+		//fmt.Println(pages)
+	} else {
+		pages = total / count
+		//fmt.Println(pages)
+	}
+
+	//fmt.Printf("page: %v; count: %v; pages: %v; total: %v\n", page, count,pages,total)
 
 	query := fmt.Sprintf("select * from `airlines` limit %d,%d", offset, count)
 
