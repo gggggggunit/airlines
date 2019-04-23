@@ -20,20 +20,18 @@ func AdminChange(rw http.ResponseWriter, r *http.Request) {
 	var id int
 	list := &AviaList{} //создаем указатель на авиялист(пустая структура) чтоб потом передать в темплейс
 	//-----------------------------------------------------------------------------------
+	idString := r.FormValue("id") //получаем id в строке
+	fmt.Printf("id from change: %s\n", idString)
+
+	id, err = strconv.Atoi(idString)
+	if err != nil {
+		fmt.Printf("id parse error:%s; ID:%s\n", err, idString)
+		http.Redirect(rw, r, "adminlist.html", 302) //redirect - перенаправление
+		return
+	}
 
 	if r.Method == "GET" {
-
-		idString := r.FormValue("id") //получаем id в строке
-		fmt.Printf("id from change: %s\n", idString)
-
-		id, err = strconv.Atoi(idString)
-		if err != nil {
-			fmt.Printf("id parse error:%s; ID:%s\n", err, idString)
-			http.Redirect(rw, r, "adminlist.html", 302) //redirect - перенаправление
-			return
-		}
 		//-----------------------------------------------------------------------------------
-
 		query := "select * from `airlines` where `id`=?"
 		rows, err := dbc.Query(query, id)
 		if err != nil {
@@ -62,6 +60,7 @@ func AdminChange(rw http.ResponseWriter, r *http.Request) {
 		return
 		//-----------------------------------------------------------------------------------
 	} else if r.Method == "POST" {
+
 		//-----------------------------------------------------------------------------------
 		source := strings.TrimSpace(r.PostFormValue("source")) //(ДЛЯ изменения source)если метот post пишем r.PostFormValue,если get то r.FormValue
 		if source == "" {
@@ -113,7 +112,7 @@ func AdminChange(rw http.ResponseWriter, r *http.Request) {
 		}
 		//-----------------------------------------------------------------------------------
 		http.Redirect(rw, r, "/admin/list", 302)
-		fmt.Printf("After source: %s; destination: %s; when: %s; price: %s\n ", source, destination, when, price)
+		fmt.Printf("After source: %s; destination: %s; when: %s; price: %s; ID: %d\n ", source, destination, when, price, id)
 		fmt.Printf("UPDATE in airlines OK\n")
 
 	}

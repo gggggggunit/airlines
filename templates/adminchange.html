@@ -1,7 +1,7 @@
 {{ template "header.html" }}
 <h1 align="center">Изменить авиарейс</h1>
 <div class="container">
-    <form action="/admin/change"  method="post" class="mt-2 mb-2">
+    <form action="/admin/change?id={{.ID}}"  method="post" class="mt-2 mb-2">
         <div class="row">
             <div class="form-group col-sm-3">
                 <input type="text" name="source" placeholder="Source" class="form-control" value="{{.Source}}">
@@ -15,7 +15,7 @@
             <div class="form-group col-sm-3">
                 <input type="text" name="price" placeholder="Price" class="form-control" value="{{.Price}}">
             </div>
-            <div class="form-group col-sm-12 text-right">
+            <div class="form-group col-sm-12 text-right mr-2">
                 <button type="submit" class="btn btn-info mr-2">Change</button>
                 <a href="/admin/list" class="btn btn-warning">Cancel</a>
             </div>
